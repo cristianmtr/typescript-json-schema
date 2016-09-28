@@ -459,17 +459,18 @@ export module TJS {
                 fullTypeName = tc.typeToString(typ, undefined, ts.TypeFormatFlags.UseFullyQualifiedType);
             }
 
+            // FORK: Remove double quotes from filename prefix of the type
+            // "main".IPaneType --> main.IPaneType
+            while (fullTypeName.indexOf("\"") !== -1) {
+                fullTypeName = fullTypeName.replace("\"","");
+            };
+            
             if (asRef) {
                 returnedDefinition = {
                     "$ref":  "#/definitions/" + fullTypeName
                 };
             }
 
-            // FORK: Remove double quotes from filename prefix of the type
-            // "main".IPaneType --> main.IPaneType
-            if (fullTypeName.indexOf("\"") !== -1) {
-                fullTypeName = fullTypeName.replace("\"","");
-            };
 
             // Parse comments
             const otherAnnotations = {};
