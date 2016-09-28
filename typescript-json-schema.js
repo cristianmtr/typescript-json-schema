@@ -396,6 +396,10 @@ var TJS;
                     "$ref": "#/definitions/" + fullTypeName
                 };
             }
+            if (fullTypeName.indexOf("\"") === -1) {
+                fullTypeName = fullTypeName.replace("\"", "");
+            }
+            ;
             var otherAnnotations = {};
             this.parseCommentsIntoDefinition(reffedType, definition, otherAnnotations);
             if (prop)

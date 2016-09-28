@@ -465,6 +465,12 @@ export module TJS {
                 };
             }
 
+            // FORK: Remove double quotes from filename prefix of the type
+            // "main".IPaneType --> main.IPaneType
+            if (fullTypeName.indexOf("\"") === -1) {
+                fullTypeName = fullTypeName.replace("\"","");
+            };
+
             // Parse comments
             const otherAnnotations = {};
             this.parseCommentsIntoDefinition(reffedType, definition, otherAnnotations); // handle comments in the type alias declaration
