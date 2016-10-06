@@ -394,7 +394,7 @@ var TJS;
             while (fullTypeName.indexOf("\"") !== -1) {
                 fullTypeName = fullTypeName.replace("\"", "");
             }
-            var indexOfDot = fullTypeName.indexOf(".");
+            var indexOfDot = fullTypeName.lastIndexOf(".");
             if (indexOfDot !== -1) {
                 fullTypeName = fullTypeName.substr(indexOfDot + 1, fullTypeName.length);
             }

@@ -468,7 +468,7 @@ export module TJS {
             // remove path prefixes from exported types
             // NOTE this will not work well if you have two types with
             // the same name in two diff. files
-            const indexOfDot = fullTypeName.indexOf(".");
+            const indexOfDot = fullTypeName.lastIndexOf(".");
             if (indexOfDot !== -1) {
                 fullTypeName = fullTypeName.substr(indexOfDot + 1, fullTypeName.length);
             }
