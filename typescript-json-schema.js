@@ -394,7 +394,10 @@ var TJS;
             while (fullTypeName.indexOf("\"") !== -1) {
                 fullTypeName = fullTypeName.replace("\"", "");
             }
-            ;
+            var indexOfDot = fullTypeName.indexOf(".");
+            if (indexOfDot !== -1) {
+                fullTypeName = fullTypeName.substr(indexOfDot + 1, fullTypeName.length);
+            }
             if (asRef) {
                 returnedDefinition = {
                     "$ref": "#/definitions/" + fullTypeName

@@ -463,8 +463,16 @@ export module TJS {
             // "main".IPaneType --> main.IPaneType
             while (fullTypeName.indexOf("\"") !== -1) {
                 fullTypeName = fullTypeName.replace("\"","");
-            };
-            
+            }
+
+            // remove path prefixes from exported types
+            // NOTE this will not work well if you have two types with
+            // the same name in two diff. files
+            const indexOfDot = fullTypeName.indexOf(".");
+            if (indexOfDot !== -1) {
+                fullTypeName = fullTypeName.substr(indexOfDot + 1, fullTypeName.length);
+            }
+
             if (asRef) {
                 returnedDefinition = {
                     "$ref":  "#/definitions/" + fullTypeName
@@ -478,7 +486,7 @@ export module TJS {
             if (prop)
                 this.parseCommentsIntoDefinition(prop, returnedDefinition, otherAnnotations);
             else
-                this.parseCommentsIntoDefinition(symbol, definition, otherAnnotations);
+                this.parseCommentsIntoDefinition(symbol, definition,    otherAnnotations);
 
             // Create the actual definition only if is an inline definition, or
             // if it will be a $ref and it is not yet created
