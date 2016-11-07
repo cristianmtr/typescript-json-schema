@@ -177,7 +177,7 @@ export module TJS {
                         definition.items = this.getTypeDefinition(arrayType, tc);
                     } else {
                         // TODO
-                        console.error("Unsupported type: ", propertyType);
+                        // console.error("Unsupported type: ", propertyType);
                         //definition = this.getTypeDefinition(propertyType, tc);
                     }
             }

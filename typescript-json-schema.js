@@ -145,7 +145,6 @@ var TJS;
                         definition.items = this.getTypeDefinition(arrayType, tc);
                     }
                     else {
-                        console.error("Unsupported type: ", propertyType);
                     }
             }
             return definition;
